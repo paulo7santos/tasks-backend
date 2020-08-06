@@ -28,9 +28,7 @@ pipeline {
             steps{
                 timeout(time: 1, unit: 'MINUTES')
                 waitForQualityGate abortPipeline:true
-                 sh 'echo "Starting Sonar Quality Gate" '
-                 
-                }
+                 sh 'echo "Starting Sonar Quality Gate" '              
             }
         }
         
