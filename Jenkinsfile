@@ -24,6 +24,15 @@ pipeline {
                 }
             }
         }
+        stage('Sonar Quality Gate'){
+            steps{
+                timeout(time: 1, unit: 'MINUTES')
+                waitForQualityGate abortPipeline:true
+                 sh 'echo "Starting Sonar Quality Gate" '
+                 
+                }
+            }
+        }
         
     }
 }
