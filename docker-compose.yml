@@ -20,6 +20,7 @@ services:
       args:
         - WAR_FILE=target/tasks-backend.war
         - CONTEXT=tasks-backend
+    networks:
       - prod_net_back
       - prod_net_front
     #ports:
