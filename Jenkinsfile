@@ -57,7 +57,17 @@ pipeline {
                 }
             }   
         } 
+        stage('Functional Test'){
+            steps{
+                dir('functional-test') {
+                    git credentialsId: 'github_login', url: 'https://github.com/paulo7santos/tasks-functional-test'
+                    sh 'echo Starting Frontned Buid'
+                    sh 'mvn clean test'
+                }
+            }   
+        }
     }
+
 }
 
 
