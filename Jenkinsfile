@@ -66,6 +66,11 @@ pipeline {
                 }
             }   
         }
+        stage('Dockerfile Test'){
+            steps{
+               sh 'docker buid -t image-test .'}
+            }  
+        } 
     }
 
 }
