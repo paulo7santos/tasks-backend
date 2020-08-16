@@ -66,12 +66,6 @@ pipeline {
                 }
             }   
         }
-        stage('Dockerfile Test'){
-            steps{
-               sh 'docker buid -t image-test .'
-               sh 'docher run --rm --name test -p 8003:8080 image-test'
-            }  
-        } 
     }
 
 }
