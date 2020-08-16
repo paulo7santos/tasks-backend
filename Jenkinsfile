@@ -46,6 +46,16 @@ pipeline {
                     sh 'mvn test' 
                 }
             }
+        }
+        stage('Deploy Frontend'){
+            steps{
+                dir('frontend') {
+                    git credentialsId: 'github_login', url: 'https://github.com/paulo7santos/tasks-frontend.git'
+                    sh 'echo Starting Frontned Buid'
+                    sh 'mvn clean package'
+                    deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://192.168.0.16:8001/')], contextPath: 'tasks', war: 'target/tasks.war'      
+                }
+            }   
         } 
     }
 }
