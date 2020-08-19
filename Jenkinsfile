@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages{
+        
+        stage('Deploy Prod'){
+            steps{
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
+                }
+        }   
         stage('Backend Build'){
             steps{
                  sh 'echo "Building backend" '
@@ -63,6 +70,13 @@ pipeline {
                     git credentialsId: 'github_login', url: 'https://github.com/paulo7santos/tasks-functional-test'
                     sh 'echo Starting Frontned Buid'
                     sh 'mvn clean test'
+                }
+            }   
+        }
+        stage('Deploy Prod'){
+            steps{
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
                 }
             }   
         }
