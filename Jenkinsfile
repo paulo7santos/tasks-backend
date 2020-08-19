@@ -6,9 +6,8 @@ pipeline {
             steps{
                 dockerNode('docker') {
 
-                   sh 'docker run hello-world'
-                    //sh 'docker-compose build'
-                    //sh 'docker-compose up -d'
+                    sh 'docker-compose build'
+                    sh 'docker-compose up -d'
                 }
                
             }
