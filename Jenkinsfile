@@ -4,9 +4,12 @@ pipeline {
         
         stage('Deploy Prod'){
             steps{
-                sh 'docker-compose build'
-                sh 'docker-compose up -d'
+                dockerNode('dockerremote') {
+                    sh 'docker-compose build'
+                    sh 'docker-compose up -d'
                 }
+               
+            }
         }   
         stage('Backend Build'){
             steps{
@@ -68,7 +71,7 @@ pipeline {
             steps{
                 dir('functional-test') {
                     git credentialsId: 'github_login', url: 'https://github.com/paulo7santos/tasks-functional-test'
-                    sh 'echo Starting Frontned Buid'
+                    sh 'echo Starting Frontend Buid'
                     sh 'mvn clean test'
                 }
             }   
