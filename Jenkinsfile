@@ -4,7 +4,7 @@ pipeline {
         
         stage('Deploy Prod'){
             steps{
-                dockerNode('dockerremote') {
+                dockerNode('docker') {
                     sh 'docker-compose build'
                     sh 'docker-compose up -d'
                 }
