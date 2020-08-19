@@ -5,8 +5,10 @@ pipeline {
         stage('Deploy Prod'){
             steps{
                 dockerNode('docker') {
-                    sh 'docker-compose build'
-                    sh 'docker-compose up -d'
+
+                    docker run hello-world
+                    //sh 'docker-compose build'
+                    //sh 'docker-compose up -d'
                 }
                
             }
