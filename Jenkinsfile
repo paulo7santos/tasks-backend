@@ -1,17 +1,6 @@
 pipeline {
     agent any
-    stages{
-        
-        stage('Deploy Prod'){
-            steps{
-          
-
-                    sh 'docker-compose build'
-                    sh 'docker-compose up -d'
-                
-               
-            }
-        }   
+    stages{    
         stage('Backend Build'){
             steps{
                  sh 'echo "Building backend" '
@@ -76,7 +65,7 @@ pipeline {
                     sh 'mvn clean test'
                 }
             }   
-        }
+        }  
     }
 }
 
